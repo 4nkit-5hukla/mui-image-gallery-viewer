@@ -2,13 +2,13 @@ name: Publish to npm
 
 on:
   push:
-    branches:
-      - main
     tags:
-      - "v*"
+      - "v*.*.*"
+  workflow_dispatch:
 
 jobs:
   publish:
+    name: Publish Package to npm
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -17,15 +17,26 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: 18.x
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Verify version matches tag
+        run: |
+          TAG_VERSION=${GITHUB_REF#refs/tags/v}
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          if [ "$TAG_VERSION" != "$PKG_VERSION" ]; then
+            echo "Version mismatch: tag=$TAG_VERSION, package.json=$PKG_VERSION"
+            exit 1
+          fi
 
       - name: Run linting
         run: npm run lint
@@ -33,22 +44,68 @@ jobs:
       - name: Run tests
         run: npm run test -- run
 
-      - name: Build library
-        run: npm run build:fast
+      - name: Run full build
+        run: npm run build
 
-      - name: Publish to npm
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: npm publish
+      - name: Check npm credentials
+        run: npm whoami
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Get CHANGELOG entry
+        id: changelog
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          # Extract changelog for this version
+          CHANGELOG=$(sed -n "/## \[$VERSION\]/,/## \[/p" CHANGELOG.md | head -n -1)
+          echo "content<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          release_name: ${{ github.ref_name }}
+          body: ${{ steps.changelog.outputs.content || 'See CHANGELOG.md for details' }}
           draft: false
-          prerelease: false
+          prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') || contains(github.ref, 'rc') }}
+
+      - name: Upload Release Assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/mui-image-gallery-viewer.es.js
+          asset_name: mui-image-gallery-viewer.es.js
+          asset_content_type: application/javascript
+
+      - name: Notify Slack (Optional)
+        if: success()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text": "✅ Successfully published mui-image-gallery-viewer ${{ github.ref_name }} to npm",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Published to npm* 🎉\n*Version:* ${{ github.ref_name }}\n*Repository:* <${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>\n*npm:* <https://www.npmjs.com/package/mui-image-gallery-viewer|mui-image-gallery-viewer>"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
