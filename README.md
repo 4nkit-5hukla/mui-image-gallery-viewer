@@ -6,10 +6,14 @@ A production-grade image gallery viewer component for React using Material-UI (M
 
 ✨ **Configurable Rail Positioning** - Place the thumbnail rail on left, right, top, or bottom
 ✨ **Multiple Transition Effects** - 9 different animation effects (fade, slide, carousel, cube, flip, rotate, zoom, etc.)
+✨ **Image Zoom** - Built-in zoom functionality with mouse wheel and keyboard support (1x to 5x)
+✨ **Image Pan** - Drag to pan zoomed images
+✨ **Download Images** - Download images with fallback for CORS-protected URLs
 ✨ **Smart Pagination** - Automatic pagination for large image sets (10+ images)
 ✨ **Lazy Loading** - Efficient lazy loading with Intersection Observer
+✨ **Image Captions** - Optional captions with smooth animations
 ✨ **Responsive Design** - Mobile-first design that works on all screen sizes
-✨ **Keyboard Navigation** - Arrow keys for image navigation
+✨ **Keyboard Navigation** - Arrow keys for navigation, +/- for zoom, 0 for reset
 ✨ **Accessibility** - ARIA labels and semantic HTML
 ✨ **TypeScript** - Full TypeScript support with comprehensive type definitions
 ✨ **Theme Integration** - Seamless MUI theme integration with sx props
@@ -245,12 +249,79 @@ const handlePageChange = async (page: number) => {
 </Box>
 ```
 
+### With Zoom and Download
+
+```tsx
+<ImageGallery
+  images={images}
+  enableZoom={true}
+  enableDownload={true}
+  minZoom={1}
+  maxZoom={5}
+/>
+```
+
+### Full Featured Gallery
+
+```tsx
+<ImageGallery
+  images={images}
+  railPosition="left"
+  transitionEffect="fade"
+  showCaptions={true}
+  enableZoom={true}
+  enableDownload={true}
+  enablePagination={true}
+  enableLazyLoading={true}
+  imagesPerPage={10}
+  onImageChange={(image, index) => console.log(`Viewing: ${image.alt}`)}
+/>
+```
+
+## Zoom & Pan
+
+When `enableZoom` is true:
+
+```tsx
+<ImageGallery
+  images={images}
+  enableZoom={true}
+  minZoom={1}
+  maxZoom={5}
+/>
+```
+
+- **Mouse Wheel** - Zoom in/out
+- **Click & Drag** - Pan zoomed image
+- **+ Key** - Zoom in
+- **- Key** - Zoom out
+- **0 Key** - Reset zoom to 100%
+
+## Download
+
+Enable image download functionality:
+
+```tsx
+<ImageGallery
+  images={images}
+  enableDownload={true}
+/>
+```
+
+Downloads work with:
+- CORS-enabled origins
+- Same-origin images
+- Cross-origin images (with blob fallback)
+
 ## Keyboard Navigation
 
 - **Arrow Left** (←) - Previous image
 - **Arrow Right** (→) - Next image
 - **Tab** - Navigate between controls
 - **Enter/Space** - Select thumbnail
+- **+ / =** - Zoom in (when zoom enabled)
+- **- / _** - Zoom out (when zoom enabled)
+- **0** - Reset zoom (when zoom enabled)
 
 ## Accessibility
 

@@ -105,3 +105,63 @@ export const ViewerNavButton = styled(Box)(({ theme }) => ({
     right: theme.spacing(1),
   },
 }));
+
+export const ViewerToolbar = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  bottom: theme.spacing(2),
+  left: "50%",
+  transform: "translateX(-50%)",
+  display: "flex",
+  alignItems: "center",
+  gap: theme.spacing(0.5),
+  backgroundColor: "rgba(0, 0, 0, 0.6)",
+  padding: theme.spacing(1),
+  borderRadius: theme.spacing(3),
+  backdropFilter: "blur(8px)",
+  zIndex: 10,
+}));
+
+export const ZoomDisplay = styled(Box)(({ theme }) => ({
+  color: "white",
+  fontSize: "12px",
+  fontWeight: 600,
+  minWidth: "50px",
+  textAlign: "center",
+  padding: theme.spacing(0.5, 1),
+}));
+
+export const ZoomButton = styled("button")(({ theme }) => ({
+  appearance: "none",
+  background: "none",
+  border: "none",
+  color: "white",
+  cursor: "pointer",
+  padding: theme.spacing(0.75),
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: theme.shape.borderRadius,
+  transition: theme.transitions.create("background-color", {
+    duration: theme.transitions.duration.shortest,
+  }),
+
+  "&:hover": {
+    backgroundColor: "rgba(255, 255, 255, 0.12)",
+  },
+
+  "&:disabled": {
+    opacity: 0.4,
+    cursor: "not-allowed",
+  },
+
+  svg: {
+    fontSize: 20,
+  },
+}));
+
+export const Separator = styled(Box)({
+  width: "1px",
+  height: "24px",
+  backgroundColor: "rgba(255, 255, 255, 0.2)",
+  margin: "0 4px",
+});

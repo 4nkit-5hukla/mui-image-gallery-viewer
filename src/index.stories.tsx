@@ -217,3 +217,58 @@ export const Responsive: Story = {
     </Box>
   ),
 };
+
+export const WithZoom: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh" }}>
+      <ImageGallery
+        images={sampleImages}
+        enableZoom={true}
+        minZoom={1}
+        maxZoom={5}
+      />
+    </Box>
+  ),
+};
+
+export const WithDownload: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh" }}>
+      <ImageGallery
+        images={sampleImages}
+        enableDownload={true}
+      />
+    </Box>
+  ),
+};
+
+export const WithZoomAndDownload: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh" }}>
+      <ImageGallery
+        images={sampleImages}
+        enableZoom={true}
+        enableDownload={true}
+        minZoom={1}
+        maxZoom={5}
+      />
+    </Box>
+  ),
+};
+
+export const FullFeatured: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh" }}>
+      <ImageGallery
+        images={sampleImages}
+        railPosition="left"
+        transitionEffect="fade"
+        showCaptions={true}
+        enableZoom={true}
+        enableDownload={true}
+        enablePagination={true}
+        enableLazyLoading={true}
+      />
+    </Box>
+  ),
+};

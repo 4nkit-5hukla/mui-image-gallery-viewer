@@ -44,6 +44,8 @@ export interface ImageGalleryProps {
   enableLazyLoading?: boolean;
   enablePagination?: boolean;
   showCaptions?: boolean;
+  enableZoom?: boolean;
+  enableDownload?: boolean;
   raiseOnHover?: boolean;
   containerHeight?: string | number;
   containerWidth?: string | number;
@@ -52,6 +54,8 @@ export interface ImageGalleryProps {
   railBackgroundColor?: string;
   railHoverEffect?: boolean;
   railBorderRadius?: string | number;
+  minZoom?: number;
+  maxZoom?: number;
   sx?: SxProps<Theme>;
   railSx?: SxProps<Theme>;
   viewerSx?: SxProps<Theme>;
@@ -112,6 +116,10 @@ export interface ImageViewerProps {
   transitionDuration: number;
   transitionDirection: TransitionDirection;
   showCaption: boolean;
+  enableZoom?: boolean;
+  enableDownload?: boolean;
+  minZoom?: number;
+  maxZoom?: number;
   onNext: () => void;
   onPrev: () => void;
   sx?: SxProps<Theme>;

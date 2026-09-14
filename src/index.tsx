@@ -10,3 +10,5 @@ export * from "@hooks/useImageGalleryState";
 export * from "@hooks/useLazyLoading";
 export * from "@hooks/usePagination";
 export * from "@hooks/useTransition";
+export * from "@hooks/useZoom";
+export { downloadImage, downloadImageAsBlob, downloadImageWithFallback } from "@shared/helpers/downloadImage";

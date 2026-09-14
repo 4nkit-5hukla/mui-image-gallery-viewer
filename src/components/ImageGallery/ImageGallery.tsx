@@ -24,6 +24,8 @@ const ImageGallery: FC<ImageGalleryProps> = ({
   enableLazyLoading = true,
   enablePagination = true,
   showCaptions = false,
+  enableZoom = false,
+  enableDownload = false,
   raiseOnHover = true,
   containerHeight = "100%",
   containerWidth = "100%",
@@ -32,6 +34,8 @@ const ImageGallery: FC<ImageGalleryProps> = ({
   railBackgroundColor,
   railHoverEffect = true,
   railBorderRadius,
+  minZoom = 1,
+  maxZoom = 5,
   sx,
   railSx,
   viewerSx,
@@ -133,6 +137,10 @@ const ImageGallery: FC<ImageGalleryProps> = ({
         transitionDuration={transitionDuration}
         transitionDirection={transitionDirection}
         showCaption={showCaptions}
+        enableZoom={enableZoom}
+        enableDownload={enableDownload}
+        minZoom={minZoom}
+        maxZoom={maxZoom}
         onNext={goToNext}
         onPrev={goPrev}
         sx={viewerSx}
