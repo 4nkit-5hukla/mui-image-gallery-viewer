@@ -345,9 +345,64 @@ Downloads work with:
 - Framer Motion 11+
 - Emotion React & Styled (peer dependencies of MUI)
 
+## Additional Components
+
+### ImageGrid
+
+Display images in a responsive grid with lightbox integration:
+
+```tsx
+import { ImageGrid, Lightbox } from "mui-image-gallery-viewer";
+import { useState } from "react";
+
+function App() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  return (
+    <>
+      <ImageGrid
+        images={images}
+        onImageClick={(_, index) => {
+          setSelectedIndex(index);
+          setLightboxOpen(true);
+        }}
+        columns={4}
+        gap={16}
+      />
+
+      <Lightbox
+        images={images}
+        open={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        initialIndex={selectedIndex}
+        enableZoom={true}
+        enableDownload={true}
+      />
+    </>
+  );
+}
+```
+
+### ImageCompare
+
+Side-by-side image comparison with slider:
+
+```tsx
+import { ImageCompare } from "mui-image-gallery-viewer";
+
+<ImageCompare
+  beforeImage="/images/before.jpg"
+  afterImage="/images/after.jpg"
+  beforeLabel="Before"
+  afterLabel="After"
+  height="500px"
+/>
+```
+
 ## Examples
 
-See the [Storybook](https://github.com/ankit-shukla/mui-image-gallery-viewer) for interactive examples of all features.
+See the [Storybook](https://ankit-shukla.github.io/mui-image-gallery-viewer/) for interactive examples of all features.
 
 ## Contributing
 
