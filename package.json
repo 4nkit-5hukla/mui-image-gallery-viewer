@@ -1,6 +1,6 @@
 {
   "name": "mui-image-gallery-viewer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A production-grade image gallery viewer component using MUI with configurable rail positioning, pagination, and multiple transition effects",
   "type": "module",
   "main": "./dist/mui-image-gallery-viewer.es.js",
