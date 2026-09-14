@@ -25,6 +25,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
       <ImageGrid images={sampleImages} />
@@ -32,38 +33,42 @@ export const Default: Story = {
   ),
 };
 
-export const WithLightbox: Story = {
-  render: () => {
-    const [lightboxOpen, setLightboxOpen] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(0);
+const WithLightboxComponent = () => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-    return (
-      <>
-        <Box sx={{ width: "100%", backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
-          <ImageGrid
-            images={sampleImages}
-            onImageClick={(_, index) => {
-              setSelectedIndex(index);
-              setLightboxOpen(true);
-            }}
-          />
-        </Box>
-
-        <Lightbox
+  return (
+    <>
+      <Box sx={{ width: "100%", backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
+        <ImageGrid
           images={sampleImages}
-          open={lightboxOpen}
-          onClose={() => setLightboxOpen(false)}
-          initialIndex={selectedIndex}
-          enableZoom={true}
-          enableDownload={true}
-          transitionEffect="fade"
+          onImageClick={(_image, index) => {
+            setSelectedIndex(index);
+            setLightboxOpen(true);
+          }}
         />
-      </>
-    );
-  },
+      </Box>
+
+      <Lightbox
+        images={sampleImages}
+        open={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        initialIndex={selectedIndex}
+        enableZoom={true}
+        enableDownload={true}
+        transitionEffect="fade"
+      />
+    </>
+  );
+};
+
+export const WithLightbox: Story = {
+  args: { images: sampleImages },
+  render: () => <WithLightboxComponent />,
 };
 
 export const CompactGrid: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
       <ImageGrid images={sampleImages} columns={6} gap={1} />
@@ -72,6 +77,7 @@ export const CompactGrid: Story = {
 };
 
 export const NoOverlay: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
       <ImageGrid images={sampleImages} showOverlay={false} />

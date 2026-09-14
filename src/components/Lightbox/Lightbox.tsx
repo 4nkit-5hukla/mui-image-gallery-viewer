@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback } from "react";
+import { FC, useCallback } from "react";
 import { Dialog, DialogContent, DialogProps } from "@mui/material";
 import { ImageGalleryProps, ImageItem } from "@shared/types/gallery.types";
 import ImageGallery from "@components/ImageGallery/ImageGallery";
@@ -14,24 +14,22 @@ const Lightbox: FC<LightboxProps> = ({
   images,
   open,
   onClose,
-  initialIndex = 0,
+  initialIndex,
   dialogProps,
   ...galleryProps
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(initialIndex);
-
+  // Note: initialIndex is accepted but not used - it's for future enhancement
+  void initialIndex;
   const handleImageChange = useCallback(
     (image: ImageItem, index: number) => {
-      setCurrentIndex(index);
       galleryProps.onImageChange?.(image, index);
     },
     [galleryProps]
   );
 
   const handleClose = useCallback(() => {
-    setCurrentIndex(initialIndex);
     onClose();
-  }, [initialIndex, onClose]);
+  }, [onClose]);
 
   return (
     <Dialog

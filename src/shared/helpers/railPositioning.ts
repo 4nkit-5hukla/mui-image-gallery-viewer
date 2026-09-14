@@ -72,7 +72,7 @@ export const getRailContainerStyles = (position: RailPosition): SxProps<Theme> =
   }
 };
 
-export const getContentLayoutStyles = (position: RailPosition): SxProps<Theme> => {
+export const getContentLayoutStyles = (): SxProps<Theme> => {
   const baseStyles: SxProps<Theme> = {
     display: "flex",
     flexDirection: "column",

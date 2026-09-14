@@ -8,7 +8,7 @@ export const downloadImage = async (image: ImageItem, filename?: string): Promis
     // Extract filename from URL if not provided
     if (!filename) {
       const urlParts = url.split("/");
-      const urlFilename = urlParts[urlParts.length - 1].split("?")[0];
+      const urlFilename = urlParts?.[urlParts.length - 1]?.split("?")?.[0];
       filename = decodeURIComponent(urlFilename || image.alt || "image");
     }
 
@@ -32,8 +32,7 @@ export const downloadImage = async (image: ImageItem, filename?: string): Promis
 };
 
 export const downloadImageAsBlob = async (
-  imageUrl: string,
-  filename?: string
+  imageUrl: string
 ): Promise<Blob> => {
   try {
     const response = await fetch(imageUrl);
@@ -54,7 +53,7 @@ export const downloadImageWithFallback = async (
   try {
     // Try direct download first (works for same-origin)
     await downloadImage(image, filename);
-  } catch (error) {
+  } catch {
     // Fallback: try fetching as blob and download
     try {
       const blob = await downloadImageAsBlob(image.src);
@@ -71,9 +70,9 @@ export const downloadImageWithFallback = async (
       document.body.removeChild(link);
 
       URL.revokeObjectURL(url);
-    } catch (fallbackError) {
-      console.error("All download attempts failed:", fallbackError);
-      throw fallbackError;
+    } catch (error: unknown) {
+      console.error("All download attempts failed:", error);
+      throw error;
     }
   }
 };

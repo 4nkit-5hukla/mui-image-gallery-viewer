@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { ReactElement } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ImageGallery from "@components/ImageGallery/ImageGallery";
 import { ImageItem } from "@shared/types/gallery.types";
@@ -24,7 +25,7 @@ const sampleImages: ImageItem[] = [
   },
 ];
 
-const renderWithTheme = (component: React.ReactElement) => {
+const renderWithTheme = (component: ReactElement) => {
   return render(<ThemeProvider theme={theme}>{component}</ThemeProvider>);
 };
 

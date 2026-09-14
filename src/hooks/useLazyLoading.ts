@@ -8,13 +8,12 @@ interface UseLazyLoadingProps {
   onLoadMore?: () => void;
   isLoading?: boolean;
   enabled?: boolean;
-  railRef?: React.RefObject<HTMLElement>;
+  railRef?: { current: HTMLElement | null };
 }
 
 export const useLazyLoading = ({
   currentPage,
   totalPages,
-  itemsPerPage,
   onLoadMore,
   isLoading = false,
   enabled = true,
@@ -45,7 +44,7 @@ export const useLazyLoading = ({
 
     observerRef.current = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           handleLoadMore();
         }
       },

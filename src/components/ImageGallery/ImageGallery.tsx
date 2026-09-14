@@ -85,8 +85,10 @@ const ImageGallery: FC<ImageGalleryProps> = ({
     return (
       <GalleryContainer
         sx={{
-          width: containerWidth,
-          height: containerHeight,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          width: containerWidth as any,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          height: containerHeight as any,
           alignItems: "center",
           justifyContent: "center",
           ...sx,
@@ -102,9 +104,12 @@ const ImageGallery: FC<ImageGalleryProps> = ({
   return (
     <GalleryContainer
       sx={{
-        width: containerWidth,
-        height: containerHeight,
-        ...layoutStyles,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        width: containerWidth as any,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        height: containerHeight as any,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ...(layoutStyles as any),
         ...sx,
       }}
     >

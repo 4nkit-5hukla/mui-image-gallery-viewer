@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
 
-export const ViewerContainer = styled(Box)(({ theme }) => ({
+export const ViewerContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   flexGrow: 1,

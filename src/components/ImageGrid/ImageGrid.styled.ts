@@ -40,7 +40,7 @@ export const GridImage = styled("img")({
   display: "block",
 });
 
-export const GridOverlay = styled(Box)(({ theme }) => ({
+export const GridOverlay = styled(Box)(() => ({
   position: "absolute",
   top: 0,
   left: 0,
@@ -51,16 +51,14 @@ export const GridOverlay = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   opacity: 0,
-  transition: theme.transitions.create("opacity", {
-    duration: theme.transitions.duration.shorter,
-  }),
+  transition: "opacity 225ms cubic-bezier(0.4, 0, 0.2, 1)",
 
   "$gridItemContainer:hover &": {
     opacity: 1,
   },
 }));
 
-export const GridPlayButton = styled(IconButton)(({ theme }) => ({
+export const GridPlayButton = styled(IconButton)(() => ({
   color: "white",
   backgroundColor: "rgba(255, 255, 255, 0.2)",
   backdropFilter: "blur(4px)",

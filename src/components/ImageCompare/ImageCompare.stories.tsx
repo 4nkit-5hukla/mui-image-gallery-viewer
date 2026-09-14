@@ -15,7 +15,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    beforeImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    afterImage: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&q=80",
+  },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageCompare
@@ -30,7 +33,10 @@ export const Default: Story = {
 };
 
 export const EditingComparison: Story = {
-  args: {},
+  args: {
+    beforeImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+    afterImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+  },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageCompare
@@ -45,7 +51,10 @@ export const EditingComparison: Story = {
 };
 
 export const FixedHeight: Story = {
-  args: {},
+  args: {
+    beforeImage: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
+    afterImage: "https://images.unsplash.com/photo-1486299519917-8ca273e5e1e7?w=800&q=80",
+  },
   render: () => (
     <Box sx={{ width: "100%", display: "flex", justifyContent: "center", p: 4 }}>
       <Box sx={{ width: 600 }}>
@@ -62,7 +71,10 @@ export const FixedHeight: Story = {
 };
 
 export const BeforeAfter: Story = {
-  args: {},
+  args: {
+    beforeImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+    afterImage: "https://images.unsplash.com/photo-1486299519917-8ca273e5e1e7?w=800&q=80",
+  },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageCompare

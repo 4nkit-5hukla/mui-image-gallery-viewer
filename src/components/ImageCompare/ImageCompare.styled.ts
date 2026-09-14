@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
 
-export const CompareContainer = styled(Box)(({ theme }) => ({
+export const CompareContainer = styled(Box)(() => ({
   position: "relative",
   width: "100%",
   height: "100%",
@@ -28,7 +28,7 @@ export const CompareImage = styled("img")({
 });
 
 export const SliderHandle = styled(Box)(({ theme }) => ({
-  position: "absolute",
+  position: "absolute" as const,
   top: 0,
   left: "50%",
   transform: "translateX(-50%)",
@@ -48,7 +48,7 @@ export const SliderHandle = styled(Box)(({ theme }) => ({
 
   "&::before": {
     content: '""',
-    position: "absolute",
+    position: "absolute" as const,
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",

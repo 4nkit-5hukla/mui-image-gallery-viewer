@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box } from "@mui/material";
 import ImageGallery from "@components/ImageGallery/ImageGallery";
-import { ImageItem, TransitionEffect } from "@shared/types/gallery.types";
+import { ImageItem } from "@shared/types/gallery.types";
 
 const sampleImages: ImageItem[] = [
   {
@@ -62,6 +62,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} />
@@ -70,6 +71,7 @@ export const Default: Story = {
 };
 
 export const RailPositionLeft: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} railPosition="left" />
@@ -78,6 +80,7 @@ export const RailPositionLeft: Story = {
 };
 
 export const RailPositionRight: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} railPosition="right" />
@@ -86,6 +89,7 @@ export const RailPositionRight: Story = {
 };
 
 export const RailPositionTop: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} railPosition="top" />
@@ -94,6 +98,7 @@ export const RailPositionTop: Story = {
 };
 
 export const RailPositionBottom: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} railPosition="bottom" />
@@ -101,19 +106,8 @@ export const RailPositionBottom: Story = {
   ),
 };
 
-const transitions: TransitionEffect[] = [
-  "fade",
-  "slide",
-  "slideover",
-  "carousel",
-  "cube",
-  "flip",
-  "rotate",
-  "zoom",
-  "zoomIn",
-];
-
 export const FadeTransition: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} transitionEffect="fade" />
@@ -122,6 +116,7 @@ export const FadeTransition: Story = {
 };
 
 export const SlideTransition: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} transitionEffect="slide" />
@@ -130,6 +125,7 @@ export const SlideTransition: Story = {
 };
 
 export const SlideoverTransition: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} transitionEffect="slideover" />
@@ -138,6 +134,7 @@ export const SlideoverTransition: Story = {
 };
 
 export const CarouselTransition: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} transitionEffect="carousel" />
@@ -146,6 +143,7 @@ export const CarouselTransition: Story = {
 };
 
 export const CubeTransition: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} transitionEffect="cube" />
@@ -154,6 +152,7 @@ export const CubeTransition: Story = {
 };
 
 export const FlipTransition: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} transitionEffect="flip" />
@@ -162,6 +161,7 @@ export const FlipTransition: Story = {
 };
 
 export const RotateTransition: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} transitionEffect="rotate" />
@@ -170,6 +170,7 @@ export const RotateTransition: Story = {
 };
 
 export const ZoomTransition: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} transitionEffect="zoom" />
@@ -178,6 +179,7 @@ export const ZoomTransition: Story = {
 };
 
 export const ZoomInTransition: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} transitionEffect="zoomIn" />
@@ -186,6 +188,7 @@ export const ZoomInTransition: Story = {
 };
 
 export const WithCaptions: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery images={sampleImages} showCaptions={true} />
@@ -194,6 +197,7 @@ export const WithCaptions: Story = {
 };
 
 export const LargeDataset: Story = {
+  args: { images: largeImageSet },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery
@@ -207,6 +211,7 @@ export const LargeDataset: Story = {
 };
 
 export const Responsive: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery
@@ -219,6 +224,7 @@ export const Responsive: Story = {
 };
 
 export const WithZoom: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery
@@ -232,6 +238,7 @@ export const WithZoom: Story = {
 };
 
 export const WithDownload: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery
@@ -243,6 +250,7 @@ export const WithDownload: Story = {
 };
 
 export const WithZoomAndDownload: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery
@@ -257,6 +265,7 @@ export const WithZoomAndDownload: Story = {
 };
 
 export const FullFeatured: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery
@@ -274,6 +283,7 @@ export const FullFeatured: Story = {
 };
 
 export const CompactGallery: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "600px", borderRadius: 2, overflow: "hidden" }}>
       <ImageGallery
@@ -288,6 +298,7 @@ export const CompactGallery: Story = {
 };
 
 export const FullscreenWithCaptions: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery
@@ -302,6 +313,7 @@ export const FullscreenWithCaptions: Story = {
 };
 
 export const PhotographyPortfolio: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery
@@ -318,6 +330,7 @@ export const PhotographyPortfolio: Story = {
 };
 
 export const HorizontalRail: Story = {
+  args: { images: largeImageSet.slice(0, 30) },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery
@@ -331,6 +344,7 @@ export const HorizontalRail: Story = {
 };
 
 export const DocumentScanner: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery
@@ -348,6 +362,7 @@ export const DocumentScanner: Story = {
 };
 
 export const ProductShowcase: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery
@@ -365,6 +380,7 @@ export const ProductShowcase: Story = {
 };
 
 export const MinimalDesign: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}>
       <ImageGallery
@@ -381,6 +397,7 @@ export const MinimalDesign: Story = {
 };
 
 export const AdvancedTransitions: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", height: "100%", gap: 2, p: 2 }}>
@@ -406,6 +423,7 @@ export const AdvancedTransitions: Story = {
 };
 
 export const TouchFriendly: Story = {
+  args: { images: sampleImages },
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageGallery

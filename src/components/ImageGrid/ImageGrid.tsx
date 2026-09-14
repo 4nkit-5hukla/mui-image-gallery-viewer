@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from "react";
+import { FC, useCallback } from "react";
 import { PlayArrowRounded } from "@mui/icons-material";
 import { SxProps, Theme } from "@mui/material";
 import {
@@ -12,6 +12,7 @@ import { ImageItem } from "@shared/types/gallery.types";
 
 interface ImageGridProps {
   images: ImageItem[];
+  // eslint-disable-next-line no-unused-vars
   onImageClick?: (image: ImageItem, index: number) => void;
   columns?: number;
   gap?: number;

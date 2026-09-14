@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useCallback, useRef, WheelEvent, PointerEvent } from "react";
+import { FC, useEffect, useCallback, useRef, WheelEvent, PointerEvent } from "react";
 import { IconButton } from "@mui/material";
 import {
   ChevronLeftRounded,

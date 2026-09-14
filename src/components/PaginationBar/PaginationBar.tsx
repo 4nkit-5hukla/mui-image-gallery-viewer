@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { CircularProgress } from "@mui/material";
 import { PaginationContainer, PaginationButton, EllipsisText } from "./PaginationBar.styled";
 import { PaginationBarProps } from "@shared/types/gallery.types";

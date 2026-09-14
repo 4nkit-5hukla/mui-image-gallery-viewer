@@ -34,9 +34,9 @@ export const getPageRange = (
 };
 
 export const shouldShowEllipsis = (indices: number[], total: number): boolean => {
-  if (indices.length === 0) return false;
-  if (indices[0] > 1) return true;
-  if (indices[indices.length - 1] < total) return true;
+  if (!indices || indices.length === 0) return false;
+  if (indices[0]! > 1) return true;
+  if (indices[indices.length - 1]! < total) return true;
   return false;
 };
 

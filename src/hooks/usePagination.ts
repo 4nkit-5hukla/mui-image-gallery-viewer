@@ -27,8 +27,8 @@ export const usePagination = ({
     [currentPage, totalPages]
   );
 
-  const shouldShowEllipsisBefore = pageIndices[0] > 1;
-  const shouldShowEllipsisAfter = pageIndices[pageIndices.length - 1] < totalPages;
+  const shouldShowEllipsisBefore = pageIndices && pageIndices.length > 0 ? pageIndices[0]! > 1 : false;
+  const shouldShowEllipsisAfter = pageIndices && pageIndices.length > 0 ? pageIndices[pageIndices.length - 1]! < totalPages : false;
 
   return {
     pageIndices,

@@ -39,7 +39,9 @@ export interface ImageGalleryProps {
   transitionEffect?: TransitionEffect;
   transitionDuration?: number;
   imagesPerPage?: number;
+  // eslint-disable-next-line no-unused-vars
   onImageChange?: (image: ImageItem, index: number) => void;
+  // eslint-disable-next-line no-unused-vars
   onPageChange?: (page: number) => void;
   enableLazyLoading?: boolean;
   enablePagination?: boolean;
@@ -66,6 +68,7 @@ export interface RailImageProps {
   image: ImageItem;
   isActive: boolean;
   index: number;
+  // eslint-disable-next-line no-unused-vars
   onClick: (index: number) => void;
   width?: string | number;
   height?: string | number;
@@ -84,6 +87,7 @@ export interface TransitionWrapperProps {
 export interface PaginationBarProps {
   currentPage: number;
   totalPages: number;
+  // eslint-disable-next-line no-unused-vars
   onPageChange: (page: number) => void;
   isLoading?: boolean;
   maxVisiblePages?: number;
@@ -97,7 +101,9 @@ export interface GalleryRailProps {
   totalPages: number;
   railPosition: RailPosition;
   isLoading: boolean;
+  // eslint-disable-next-line no-unused-vars
   onImageSelect: (index: number) => void;
+  // eslint-disable-next-line no-unused-vars
   onPageChange: (page: number) => void;
   onLoadMore?: () => void;
   railWidth?: string | number;

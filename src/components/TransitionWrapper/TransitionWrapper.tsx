@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import { FC } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TransitionContainer, TransitionContent } from "./TransitionWrapper.styled";
 import { TransitionWrapperProps } from "@shared/types/gallery.types";
@@ -33,9 +33,12 @@ const TransitionWrapper: FC<TransitionWrapperProps> = ({
       <AnimatePresence mode="wait">
         <motion.div
           key={isActive ? "active" : "inactive"}
-          initial={variants.initial as Record<string, unknown>}
-          animate={variants.enter as Record<string, unknown>}
-          exit={variants.exit as Record<string, unknown>}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          initial={variants.initial as any}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          animate={variants.enter as any}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          exit={variants.exit as any}
           transition={{ duration: effectDuration / 1000 }}
           style={{ width: "100%", height: "100%" }}
         >
