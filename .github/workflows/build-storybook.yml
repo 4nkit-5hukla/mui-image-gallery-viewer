@@ -32,7 +32,7 @@ jobs:
         run: npm run build-storybook
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storybook-dist
           path: storybook-static
@@ -62,7 +62,7 @@ jobs:
           cache: "npm"
 
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: storybook-dist
           path: storybook-static
@@ -71,7 +71,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: storybook-static
 
