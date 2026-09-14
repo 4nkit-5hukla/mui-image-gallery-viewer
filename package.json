@@ -52,7 +52,7 @@
     "@mui/icons-material": "^5.14.0",
     "@storybook/addon-docs": "8.6.18",
     "@storybook/addon-interactions": "8.6.18",
-    "@storybook/addon-links": "8.6.18",
+    "@storybook/addon-links": "10.6.0",
     "@storybook/addon-onboarding": "8.6.18",
     "@storybook/blocks": "8.6.18",
     "@storybook/react": "8.6.18",
