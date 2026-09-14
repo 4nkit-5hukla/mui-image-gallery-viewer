@@ -272,3 +272,151 @@ export const FullFeatured: Story = {
     </Box>
   ),
 };
+
+export const CompactGallery: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "600px", borderRadius: 2, overflow: "hidden" }}>
+      <ImageGallery
+        images={sampleImages}
+        railPosition="bottom"
+        transitionEffect="slide"
+        enableZoom={false}
+        railBorderRadius="0"
+      />
+    </Box>
+  ),
+};
+
+export const FullscreenWithCaptions: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh" }}>
+      <ImageGallery
+        images={sampleImages}
+        railPosition="left"
+        transitionEffect="fade"
+        showCaptions={true}
+        enableDownload={true}
+      />
+    </Box>
+  ),
+};
+
+export const PhotographyPortfolio: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh" }}>
+      <ImageGallery
+        images={sampleImages}
+        railPosition="bottom"
+        transitionEffect="fade"
+        showCaptions={true}
+        enableZoom={true}
+        enableDownload={true}
+        transitionDuration={500}
+      />
+    </Box>
+  ),
+};
+
+export const HorizontalRail: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh" }}>
+      <ImageGallery
+        images={largeImageSet.slice(0, 30)}
+        railPosition="top"
+        transitionEffect="slide"
+        imagesPerPage={8}
+      />
+    </Box>
+  ),
+};
+
+export const DocumentScanner: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh" }}>
+      <ImageGallery
+        images={sampleImages}
+        railPosition="right"
+        transitionEffect="slideover"
+        enableZoom={true}
+        enableDownload={true}
+        minZoom={1}
+        maxZoom={8}
+        showCaptions={true}
+      />
+    </Box>
+  ),
+};
+
+export const ProductShowcase: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh" }}>
+      <ImageGallery
+        images={sampleImages}
+        railPosition="left"
+        transitionEffect="carousel"
+        enableZoom={true}
+        enableDownload={true}
+        showCaptions={true}
+        railBackgroundColor="#f5f5f5"
+        transitionDuration={400}
+      />
+    </Box>
+  ),
+};
+
+export const MinimalDesign: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh", backgroundColor: "#fff" }}>
+      <ImageGallery
+        images={sampleImages}
+        railPosition="bottom"
+        transitionEffect="fade"
+        enableZoom={false}
+        railBackgroundColor="#ffffff"
+        sx={{ backgroundColor: "#f9f9f9" }}
+        railSx={{ padding: "8px" }}
+      />
+    </Box>
+  ),
+};
+
+export const AdvancedTransitions: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh" }}>
+      <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", height: "100%", gap: 2, p: 2 }}>
+        <Box sx={{ border: "1px solid #ccc", borderRadius: 2, overflow: "hidden" }}>
+          <ImageGallery
+            images={sampleImages}
+            railPosition="bottom"
+            transitionEffect="cube"
+            transitionDuration={600}
+          />
+        </Box>
+        <Box sx={{ border: "1px solid #ccc", borderRadius: 2, overflow: "hidden" }}>
+          <ImageGallery
+            images={sampleImages}
+            railPosition="bottom"
+            transitionEffect="flip"
+            transitionDuration={600}
+          />
+        </Box>
+      </Box>
+    </Box>
+  ),
+};
+
+export const TouchFriendly: Story = {
+  render: () => (
+    <Box sx={{ width: "100%", height: "100vh" }}>
+      <ImageGallery
+        images={sampleImages}
+        railPosition="bottom"
+        transitionEffect="slide"
+        enableZoom={true}
+        enableDownload={true}
+        minZoom={1}
+        maxZoom={3}
+      />
+    </Box>
+  ),
+};
