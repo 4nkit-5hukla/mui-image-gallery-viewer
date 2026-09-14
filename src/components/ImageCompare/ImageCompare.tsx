@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState, useEffect, useCallback } from "react";
+import { FC, useRef, useState, useEffect, useCallback } from "react";
 import { SxProps, Theme } from "@mui/material";
 import {
   CompareContainer,
@@ -55,6 +55,7 @@ const ImageCompare: FC<ImageCompareProps> = ({
 
       const rect = containerRef.current.getBoundingClientRect();
       const touch = e.touches[0];
+      if (!touch) return;
       const newPosition = ((touch.clientX - rect.left) / rect.width) * 100;
       setSliderPosition(Math.max(0, Math.min(100, newPosition)));
     },
@@ -62,19 +63,19 @@ const ImageCompare: FC<ImageCompareProps> = ({
   );
 
   useEffect(() => {
-    if (isSliding) {
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
-      document.addEventListener("touchmove", handleTouchMove);
-      document.addEventListener("touchend", handleMouseUp);
+    if (!isSliding) return;
 
-      return () => {
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", handleMouseUp);
-        document.removeEventListener("touchmove", handleTouchMove);
-        document.removeEventListener("touchend", handleMouseUp);
-      };
-    }
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("touchmove", handleTouchMove);
+    document.addEventListener("touchend", handleMouseUp);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleMouseUp);
+    };
   }, [isSliding, handleMouseMove, handleMouseUp, handleTouchMove]);
 
   return (

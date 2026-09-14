@@ -15,6 +15,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {},
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageCompare
@@ -29,6 +30,7 @@ export const Default: Story = {
 };
 
 export const EditingComparison: Story = {
+  args: {},
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageCompare
@@ -43,6 +45,7 @@ export const EditingComparison: Story = {
 };
 
 export const FixedHeight: Story = {
+  args: {},
   render: () => (
     <Box sx={{ width: "100%", display: "flex", justifyContent: "center", p: 4 }}>
       <Box sx={{ width: 600 }}>
@@ -59,6 +62,7 @@ export const FixedHeight: Story = {
 };
 
 export const BeforeAfter: Story = {
+  args: {},
   render: () => (
     <Box sx={{ width: "100%", height: "100vh" }}>
       <ImageCompare

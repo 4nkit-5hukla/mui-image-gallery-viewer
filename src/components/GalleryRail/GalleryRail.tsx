@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import { FC, useRef } from "react";
 import { CircularProgress } from "@mui/material";
 import {
   RailContainer,
@@ -23,9 +23,7 @@ const GalleryRail: FC<GalleryRailProps> = ({
   onPageChange,
   onLoadMore,
   railWidth,
-  railThickness,
   railBackgroundColor,
-  railHoverEffect = true,
   railBorderRadius,
   sx,
 }) => {

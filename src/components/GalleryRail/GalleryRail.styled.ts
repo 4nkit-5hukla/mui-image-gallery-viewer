@@ -86,7 +86,7 @@ export const RailImages = styled(Box, {
   };
 });
 
-export const RailLoadingIndicator = styled(Box)(({ theme }) => ({
+export const RailLoadingIndicator = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

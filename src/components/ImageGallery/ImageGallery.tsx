@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useCallback } from "react";
+import { FC, useEffect, useCallback } from "react";
 import { GalleryContainer } from "./ImageGallery.styled";
 import { ImageGalleryProps } from "@shared/types/gallery.types";
 import { useImageGalleryState } from "@hooks/useImageGalleryState";
@@ -22,11 +22,9 @@ const ImageGallery: FC<ImageGalleryProps> = ({
   onImageChange,
   onPageChange: onPageChangeCallback,
   enableLazyLoading = true,
-  enablePagination = true,
   showCaptions = false,
   enableZoom = false,
   enableDownload = false,
-  raiseOnHover = true,
   containerHeight = "100%",
   containerWidth = "100%",
   railWidth,
@@ -39,7 +37,6 @@ const ImageGallery: FC<ImageGalleryProps> = ({
   sx,
   railSx,
   viewerSx,
-  paginationSx,
 }) => {
   const images = normalizeImages(rawImages);
 
